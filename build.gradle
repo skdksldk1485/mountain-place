@@ -23,6 +23,8 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation group: 'org.postgresql', name: 'postgresql', version: '42.2.23' // 추가
 	runtimeOnly 'org.postgresql:postgresql' // 추가
+	implementation group: 'com.google.firebase', name: 'firebase-admin', version: '8.0.1'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
 }
 
 tasks.named('test') {
