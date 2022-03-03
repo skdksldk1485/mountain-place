@@ -28,4 +28,12 @@ public class AuthConfig {
         return authFilterContainer;
     }
 
+    @Bean
+    @Profile("main")
+    public AuthFilterContainer firebaseAuthFilter() {
+        log.info("Initializing Firebase AuthFilter");
+        AuthFilterContainer authFilterContainer = new AuthFilterContainer();
+        authFilterContainer.setAuthFilter(new JwtFilter(userService, firebaseAuth));
+        return authFilterContainer;
+    }
 }
