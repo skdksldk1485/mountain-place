@@ -34,7 +34,7 @@ jobs:
       - name: checkout frontend
         uses: actions/checkout@v2
         with:
-          repository: skdksldk/mountain
+          repository: skdksldk1485/mountain
           path: ./frontend
 
       
