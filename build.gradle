@@ -35,5 +35,6 @@ tasks.named('test') {
 }
 
 bootJar {
-	archieveName = 'santada.jar'
+	archiveFileName = 'santada.jar'
+	destinationDirectory = file("./target")
 }
