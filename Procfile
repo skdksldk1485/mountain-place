@@ -1,1 +1,1 @@
-web java -Dserver.port=$PORT $JAVA_OPTS -Dspring.profiles.active=main -jar build/libs/santada-0.0.1-SNAPSHOT.jar
+web java -Dserver.port=$PORT $JAVA_OPTS -Dspring.profiles.active=main -jar build/libs/place-0.0.1-SNAPSHOT.jar
