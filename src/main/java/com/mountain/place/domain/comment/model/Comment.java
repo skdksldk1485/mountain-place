@@ -28,7 +28,7 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long commentNo;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)// 데이터 n : 1 매핑 하나의 유저에 여러개 댓글
     @JoinColumn(name = "uid")
     private User uid;
 
