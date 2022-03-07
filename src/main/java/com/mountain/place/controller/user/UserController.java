@@ -93,9 +93,7 @@ public class UserController {
     // 로그인
     @GetMapping("/me")
     public UserDTO login(Authentication authentication) {
-        log.info("1");
         User loginUser = (User) authentication.getPrincipal();
-        log.info("2");
         return new UserDTO(loginUser);
     }
 
