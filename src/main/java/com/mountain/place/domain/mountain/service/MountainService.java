@@ -1,8 +1,6 @@
 package com.mountain.place.domain.mountain.service;
 
 
-import com.mountain.place.controller.mountain.dto.ResponseMountainDTO;
-import com.mountain.place.domain.community.model.Community;
 import com.mountain.place.domain.mountain.dao.MountainRepository;
 import com.mountain.place.domain.mountain.model.Mountain;
 import com.mountain.place.exception.CustomException;
@@ -27,6 +25,14 @@ public class MountainService {
         if(mountains.isEmpty())
             throw new CustomException(ErrorCode.NOT_FOUND_MOUNTAIN);
         return mountains;
+    }
+
+    @Transactional
+    public Mountain findMountainDetail(Long mountainNo) {
+
+        Mountain mountain = mountainRepository.findById(mountainNo)
+                .orElseThrow(()-> new CustomException(ErrorCode.NOT_FOUND_MOUNTAIN));
+        return mountain;
     }
 
 }
