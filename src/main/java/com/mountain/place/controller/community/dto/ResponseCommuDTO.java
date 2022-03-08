@@ -1,8 +1,8 @@
 package com.mountain.place.controller.community.dto;
 
 
-import com.mountain.place.controller.user.dto.UserDTO;
 import com.mountain.place.domain.community.model.Community;
+import com.mountain.place.domain.user.model.User;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -13,11 +13,9 @@ public class ResponseCommuDTO {
 
     private Long commupostNo;
 
-    private UserDTO user;
+    private User writerId;
 
-    private Long cateId;
-
-    private String category;
+    private String cateId;
 
     private LocalDateTime createdAt;
 
@@ -29,21 +27,14 @@ public class ResponseCommuDTO {
 
     private String content;
 
-
     public ResponseCommuDTO(Community community) {
         this.commupostNo = community.getCommupostNo();
-        this.cateId = community.getCateId().getId();
-        this.category = community.getCateId().getName();
+        this.writerId = community.getWriterId();
+        this.cateId = community.getCateId().getName();
         this.createdAt = community.getFstRegDtm();
         this.updatedAt = community.getLstUpdDtm();
         this.viewCount = community.getViewCount();
         this.title = community.getTitle();
         this.content = community.getContent();
-        this.user = new UserDTO(community.getWriterId());
     }
-
-    public ResponseCommuDTO(Long commupostNo) {
-        this.commupostNo = commupostNo;
-    }
-
 }
