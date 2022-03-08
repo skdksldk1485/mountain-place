@@ -2,6 +2,7 @@ package com.mountain.place.controller.category.dto;
 
 
 import com.mountain.place.domain.category.model.Category;
+import lombok.Builder;
 import lombok.Data;
 
 
