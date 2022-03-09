@@ -53,6 +53,8 @@ SANTADA와 함께 등산을 즐깁시다! 🙌🌏💪
 
 - 🛠 [기능 명세서](https://chartreuse-saltopus-d7d.notion.site/4ca1f6752af14c0cacac490f0c462bac)
 
+- 🖥 [페이지 기획서](https://www.figma.com/file/anF0l6sOKk9QE7FnKKPHAE/Ant-Design-Open-Source-(Community)?node-id=133949%3A182043)
+
 - 📑 [API 설계](https://chartreuse-saltopus-d7d.notion.site/API-ed28a23d43e84f91bbebb1bcf8ad3f2d)
 
 - 💾 [DB 명세서](https://chartreuse-saltopus-d7d.notion.site/DB-940af7144ce2452cab28e2474527a64f)
