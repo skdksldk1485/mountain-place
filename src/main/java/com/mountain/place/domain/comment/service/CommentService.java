@@ -2,6 +2,7 @@ package com.mountain.place.domain.comment.service;
 
 import com.mountain.place.controller.mountainComment.dto.RegisterMTCommentDTO;
 import com.mountain.place.domain.category.dao.CategoryRepository;
+import com.mountain.place.domain.category.model.Category;
 import com.mountain.place.domain.comment.dao.CommentRespository;
 import com.mountain.place.domain.comment.model.Comment;
 import com.mountain.place.domain.community.dao.CommunityRepository;
@@ -12,6 +13,7 @@ import com.mountain.place.domain.user.model.User;
 import com.mountain.place.exception.CustomException;
 import com.mountain.place.exception.ErrorCode;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.tomcat.jni.Error;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -27,6 +29,9 @@ public class CommentService {
 
     @Autowired
     CommentRespository commentRespository;
+
+    @Autowired
+    CategoryRepository categoryRepository;
 
     @Autowired
     CommunityRepository communityRepository;
@@ -64,7 +69,6 @@ public class CommentService {
 
     @Transactional
     public Comment createMTComment(User user, Long mountainNo, RegisterMTCommentDTO registerMTCommentDTO) {
-
         Mountain mountain = mountainRepository.findById(mountainNo)
                 .orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND_MOUNTAIN));
 
@@ -112,5 +116,12 @@ public class CommentService {
             comment.setCommentContent(registerMTCommentDTO.getContent());
             commentRespository.save(comment);
         }
+    }
+
+
+
+    @Transactional
+    public Page<Comment> getMountainCommentList(Mountain mountain, Pageable pageable) {
+        return commentRespository.findByMountainNo(mountain, pageable);
     }
 }
