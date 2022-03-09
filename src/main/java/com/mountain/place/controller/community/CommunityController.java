@@ -14,10 +14,12 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
+import lombok.extern.slf4j.Slf4j;
+
 
 @RestController
 @RequestMapping("/communities")
+@Slf4j
 public class CommunityController {
 
     @Autowired
@@ -43,12 +45,12 @@ public class CommunityController {
             @RequestParam(required = false) String title,
 
             Pageable pageable) {
-
+        log.info("cateId : " + cateId);
+        log.info("title : " + title);
         Specification<Community> spec = ((root, query, criteriaBuilder) -> null);
 
         if(cateId != null) spec = spec.and(CommunitySpecification.equalCateId(cateId));
-        if(title != null) spec = spec.and(CommunitySpecification.equalTitle(title));
-
+        if(title != null) spec = spec.and(CommunitySpecification.likeTitle(title));
 
         return communityService.findAll(spec, pageable).map(Community -> new ResponseCommuDTO(Community));
     }
