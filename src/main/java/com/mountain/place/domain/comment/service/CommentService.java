@@ -1,5 +1,6 @@
 package com.mountain.place.domain.comment.service;
 
+import com.mountain.place.controller.communitycomment.dto.RegisterCommuCommentDTO;
 import com.mountain.place.controller.mountainComment.dto.RegisterMTCommentDTO;
 import com.mountain.place.domain.category.dao.CategoryRepository;
 import com.mountain.place.domain.category.model.Category;
@@ -41,6 +42,21 @@ public class CommentService {
 
 
     @Transactional
+    public Comment createComment(User user, Community community, RegisterCommuCommentDTO registerCommentDTO) {
+
+
+        Comment comment = Comment.builder()
+                .commentContent(registerCommentDTO.getContent())
+                .commuNo(community)
+                .user(user)
+                .build();
+
+        return commentRespository.save(comment);
+    }
+
+    ;
+
+    @Transactional
     public Page<Comment> getCommunityCommentList(Community community, Pageable pageable) {
         return commentRespository.findByCommuNo(community, pageable);
     }
@@ -65,6 +81,26 @@ public class CommentService {
         } else {
             commentRespository.delete(comment);
         }
+    }
+
+    public void updateCommunityComment(User user, Long commuPostNum, Long commentNo, RegisterCommuCommentDTO registerCommentDTO) {
+
+        Community community = communityRepository.findById(commuPostNum)
+                .orElseThrow(()-> new CustomException(ErrorCode.NOT_FOUND_COMMUNITY));
+
+        Comment comment =
+                commentRespository.findById(commentNo)
+                        .orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND_REPLY));
+
+        if(!comment.getUser().getId().equals(user.getId())) {
+            throw new CustomException(ErrorCode.FORBIDDEN_USER);
+        } else if(!comment.getCommuNo().equals(community)){
+            throw new CustomException(ErrorCode.BAD_REQUEST_PARAM);
+        } else {
+            comment.setCommentContent(registerCommentDTO.getContent());
+            commentRespository.save(comment);
+        }
+
     }
 
     @Transactional
