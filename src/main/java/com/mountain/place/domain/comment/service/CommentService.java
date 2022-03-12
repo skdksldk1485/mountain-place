@@ -9,6 +9,7 @@ import com.mountain.place.domain.community.dao.CommunityRepository;
 import com.mountain.place.domain.community.model.Community;
 import com.mountain.place.domain.mountain.dao.MountainRepository;
 import com.mountain.place.domain.mountain.model.Mountain;
+import com.mountain.place.domain.user.dao.UserRepository;
 import com.mountain.place.domain.user.model.User;
 import com.mountain.place.exception.CustomException;
 import com.mountain.place.exception.ErrorCode;
@@ -35,6 +36,8 @@ public class CommentService {
     @Autowired
     MountainRepository mountainRepository;
 
+    @Autowired
+    UserRepository userRepository;
 
     @Transactional
     public Comment createComment(User user, Community community, RegisterCommuCommentDTO registerCommentDTO) {
@@ -69,7 +72,7 @@ public class CommentService {
                         .orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND_REPLY));
 
 
-        if (!comment.getUser().getId().equals(user.getId())) {
+        if (!comment.getUid().getId().equals(user.getId())) {
             throw new CustomException(ErrorCode.FORBIDDEN_USER);
         } else if (!comment.getCommuNo().equals(community)) {
             throw new CustomException(ErrorCode.BAD_REQUEST_PARAM);
@@ -87,7 +90,7 @@ public class CommentService {
               commentRespository.findById(commentNo)
                       .orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND_REPLY));
 
-      if(!comment.getUser().getId().equals(user.getId())) {
+      if(!comment.getUid().getId().equals(user.getId())) {
           throw new CustomException(ErrorCode.FORBIDDEN_USER);
       } else if(!comment.getCommuNo().equals(community)){
           throw new CustomException(ErrorCode.BAD_REQUEST_PARAM);
@@ -121,7 +124,7 @@ public class CommentService {
         Comment comment = commentRespository.findById(commentNo)
                 .orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND_REPLY));
 
-        if (!comment.getUser().getId().equals(user.getId())) {
+        if (!comment.getUid().getId().equals(user.getId())) {
             throw new CustomException(ErrorCode.FORBIDDEN_USER);
         } else if (!comment.getMountainNo().equals(mountain)) {
             throw new CustomException(ErrorCode.BAD_REQUEST_PARAM);
@@ -139,7 +142,7 @@ public class CommentService {
         Comment comment = commentRespository.findById(commentNo)
                 .orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND_REPLY));
 
-        if (!comment.getUser().getId().equals(user.getId())) {
+        if (!comment.getUid().getId().equals(user.getId())) {
             throw new CustomException(ErrorCode.FORBIDDEN_USER);
         } else if (!comment.getMountainNo().equals(mountain)) {
             throw new CustomException(ErrorCode.BAD_REQUEST_PARAM);
@@ -149,6 +152,13 @@ public class CommentService {
         }
     }
 
+    @Transactional
+    public Page<Comment> findAllUserComments(String userId, Pageable pageable) {
+        User user = userRepository.findById(userId)
+                .orElseThrow();// TODO: UserNotFoundException::new 추가하기
+
+        return commentRespository.findByUid(user, pageable);
+    }
 
 
     @Transactional

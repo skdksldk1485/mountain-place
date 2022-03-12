@@ -28,9 +28,9 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long commentNo;
 
-    @OneToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "uid")
-    private User user;
+    private User uid;
 
     @ManyToOne(fetch = FetchType.LAZY)// 데이터 n : 1 매핑 하나의 산에 여러개 댓글
     @JoinColumn(name = "mountain_no")
@@ -55,7 +55,7 @@ public class Comment {
     @Builder
     public Comment(Long commentNo, User user, Mountain mountainNo, Community commuNo, Category cateId, String commentContent, LocalDateTime fstRegDtm, LocalDateTime lstUpdDtm) {
         this.commentNo = commentNo;
-        this.user = user;
+        this.uid = user;
         this.mountainNo = mountainNo;
         this.commuNo = commuNo;
         this.commentContent = commentContent;
