@@ -1,12 +1,9 @@
 package com.mountain.place.controller.mountainComment;
 
 
-import com.mountain.place.controller.communitycomment.dto.ResponseCommuCommentDTO;
 import com.mountain.place.controller.mountainComment.dto.RegisterMTCommentDTO;
 import com.mountain.place.controller.mountainComment.dto.ResponseMTCommentDTO;
-import com.mountain.place.domain.comment.model.Comment;
 import com.mountain.place.domain.comment.service.CommentService;
-import com.mountain.place.domain.community.model.Community;
 import com.mountain.place.domain.mountain.model.Mountain;
 import com.mountain.place.domain.mountain.service.MountainService;
 import com.mountain.place.domain.user.model.User;
@@ -77,13 +74,5 @@ public class MountainCommentController {
         return commentService.getMountainCommentList(mountain,pageable).map(comment -> new ResponseMTCommentDTO(comment));
 
 
-    }
-
-    // MT 사용자 댓글 전체 조회
-    @GetMapping("/comments/{userId}")
-    public Page<ResponseMTCommentDTO> getUserComments(
-            @PathVariable("userId") String userId, Pageable pageable) {
-
-        return commentService.findAllUserComments(userId, pageable).map(comment -> new ResponseMTCommentDTO(comment));
     }
 }
