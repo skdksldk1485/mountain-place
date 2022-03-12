@@ -27,7 +27,7 @@ public class ResponseCommuCommentDTO {
 
     public ResponseCommuCommentDTO(Comment comment, Community community) {
         this.commentNo = comment.getCommentNo();
-        this.user = new UserDTO(comment.getUser());
+        this.user = new UserDTO(comment.getUid());
         this.commentContent = comment.getCommentContent();
         this.createdAt = comment.getFstRegDtm();
         this.updateAt = comment.getLstUpdDtm();
