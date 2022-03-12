@@ -75,4 +75,12 @@ public class MountainCommentController {
 
 
     }
+
+    // MT 사용자 댓글 전체 조회
+    @GetMapping("/comments/{userId}")
+    public Page<ResponseMTCommentDTO> getUserComments(
+            @PathVariable("userId") String userId, Pageable pageable) {
+
+        return commentService.findAllUserComments(userId, pageable).map(comment -> new ResponseMTCommentDTO(comment));
+    }
 }
