@@ -19,7 +19,4 @@ public interface CommentRespository extends JpaRepository<Comment, Long> {
 
     Page<Comment> findByMountainNo(Mountain mountain, Pageable pageable);
 
-    Page<Comment> findByUser(User user, Pageable pageable);
-
-    //Page<Comment> findAllByUserOrderByCreatedAtDesc(User user, Pageable pageable);
 }
