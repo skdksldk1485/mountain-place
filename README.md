@@ -64,5 +64,5 @@ SANTADA와 함께 등산을 즐깁시다! 🙌🌏💪
 
 - 🖥 [페이지 기획서](https://www.figma.com/file/anF0l6sOKk9QE7FnKKPHAE/Ant-Design-Open-Source-(Community)?node-id=133949%3A182043)
 
-![figma2](https://user-images.githubusercontent.com/29578054/159726414-c4cbaa84-b5ae-4d32-b6ee-eda2a2dd9f76.jpg)
+- ![figma2](https://user-images.githubusercontent.com/29578054/159726414-c4cbaa84-b5ae-4d32-b6ee-eda2a2dd9f76.jpg)
 
