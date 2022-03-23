@@ -66,3 +66,8 @@ SANTADA와 함께 등산을 즐깁시다! 🙌🌏💪
 
   ![figma2](https://user-images.githubusercontent.com/29578054/159726414-c4cbaa84-b5ae-4d32-b6ee-eda2a2dd9f76.jpg)
 
+## 👩🏻‍🤝‍👩🏻👩‍💻 SANTADA 팀
+
+- Front-End Developer👩‍💻 [김준수](https://github.com/skdksldk)
+- Front-End Developer👩‍💻 [송미숙](https://github.com/songmi134)
+- Front-End Github Url : https://github.com/skdksldk/santada
