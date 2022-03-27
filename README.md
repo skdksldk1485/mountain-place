@@ -20,6 +20,16 @@ SANTADA와 함께 등산을 즐깁시다! 🙌🌏💪
 - 등산 후기에 관심이 있는 사람
 - 취미가 등산인 사람
 
+## ✨시연영상
+
+
+
+https://user-images.githubusercontent.com/29578054/160291852-ce8da4c7-ffb3-4fa6-a5d7-b0cf4a4d119b.mp4
+
+
+
+<br />
+
 ## 🌏 사이트
 
 <https://santadacom.herokuapp.com/>
