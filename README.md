@@ -24,13 +24,11 @@ SANTADA와 함께 등산을 즐깁시다! 🙌🌏💪
 
 
 
-https://user-images.githubusercontent.com/29578054/160291926-741e950d-eb40-456b-8e14-dfea47a916a0.mp4
+
+https://user-images.githubusercontent.com/29578054/160292493-11231ac1-7968-4097-898f-04979c710822.mp4
 
 
 
-
-
-<br />
 
 ## 🌏 사이트
 
